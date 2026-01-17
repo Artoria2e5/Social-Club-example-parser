@@ -210,8 +210,7 @@ function getVerificationToken(cookieJar, callback) {
             return;
         }
 
-        // Caution: There are multiple "__RequestVerificationToken" in the body, take the right one
-        var regExpVerificationToken = new RegExp('</li>[^]*<input name="__RequestVerificationToken" type="hidden" value="(.*)" \/><li class="twitter">');
+        var regExpVerificationToken = new RegExp('<input name="__RequestVerificationToken" type="hidden" value="(.*)" \/>');
         var match = body.match(regExpVerificationToken);
         var verificationToken = match ? match[1] : null;
 
